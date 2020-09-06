@@ -21,15 +21,15 @@ public class UsersService {
         usersRepository.save(u);
     }
 
-    public Users getUserByToken(String token){
-        return usersRepository.findUsersByToken(token);
-    }
-
-    public Users getUserByEmail(String email){
-        return usersRepository.findUsersByUserEmail(email);
-    }
-
-    public Users getUserByUsername(String username){
-        return usersRepository.findUsersByUsername(username);
-    }
+//    public Users getUserByToken(String token){
+//
+//    }
+//
+//    public Users getUserByEmail(String email){
+//        return usersRepository.findUsersByUserEmail(email);
+//    }
+//
+//    public Users getUserByUsername(String username){
+//        return usersRepository.findUsersByUsername(username);
+//    }
 }
