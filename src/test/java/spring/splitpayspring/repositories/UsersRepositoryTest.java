@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import spring.splitpayspring.models.Groups;
 import spring.splitpayspring.models.Users;
 
 import java.util.List;
@@ -15,10 +16,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserRepositoryTest {
+public class UsersRepositoryTest {
 
     @Autowired
     UsersRepository usersRepository;
+    @Autowired
+    GroupsRepository groupsRepository;
     @Before
     public void setup(){
         Users u = new Users();
@@ -44,5 +47,12 @@ public class UserRepositoryTest {
     public void whenGivenUsername_returnUser(){
         List<Users> u = usersRepository.findUsersByUsername("username");
         assertThat(u).isNotNull();
+    }
+
+    @Test
+    public void whenGivenGroups_returnUsers(){
+        Groups group = groupsRepository.findById(1L).get();
+        List<Users> users = usersRepository.findUsersByGroups(group);
+        assertThat(users).isNotNull();
     }
 }

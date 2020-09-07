@@ -22,6 +22,6 @@ public class Groups {
     @ManyToMany
     Set<Users> users;
 
-    @OneToMany(mappedBy = "groupExpenses")
+    @OneToMany(mappedBy = "groups")
     Set<GroupExpenses> groupExpenses;
 }

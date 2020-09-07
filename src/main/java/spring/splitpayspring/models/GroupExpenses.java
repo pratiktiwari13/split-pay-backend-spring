@@ -16,7 +16,7 @@ public class GroupExpenses {
 
     @ManyToOne
     @JoinColumn(name="group_id")
-    Groups groupExpenses;
+    Groups groups;
 
     @Column(name="amount")
     Long amount;
