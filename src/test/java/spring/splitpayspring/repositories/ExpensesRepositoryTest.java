@@ -55,7 +55,7 @@ public class ExpensesRepositoryTest {
 
     @Test
     public void whenFindByToAndFrom_returnExpenses(){
-        expensesRepository.save(expense);
+       expense = expensesRepository.saveAndFlush(expense);
         List<Expenses> expenses = expensesRepository.findExpensesByFromUserIdAndToUserId(user1,user2);
         for (Expenses e : expenses) {
             assertThat(e.getFromUserId()).isEqualTo(user1);
@@ -66,6 +66,7 @@ public class ExpensesRepositoryTest {
     @Test
     public void whenGivenMyUserID_returnUsersWhoOweMe(){
         Users user = usersRepository.getOne(267L);
+        System.out.println(expense.getToUserId());
         List<Object[]> objects = expensesRepository.findUsersWhoOweMe(user);
         assertThat(objects.get(0).length).isEqualTo(3);
     }
@@ -73,6 +74,7 @@ public class ExpensesRepositoryTest {
     @Test
     public void whenGivenMyUserId_returnUsersIOweTo(){
         Users user = usersRepository.getOne(268L);
+        System.out.println(expense.getFromUserId());
         List<Object[]> objects = expensesRepository.findUsersIOweTo(user);
         assertThat(objects.get(0).length).isEqualTo(3);
     }
