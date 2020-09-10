@@ -46,11 +46,13 @@ public class ExpensesService {
         else if(amount==currentAmount){
             expense.setIsPaid(true);
             expense.setIsOwing(false);
+            expensesRepository.save(expense);
             return 0L;
         }
         else{
             Long remainingAmount = currentAmount - amount;
             expense.setAmount(remainingAmount);
+            expensesRepository.save(expense);
             return remainingAmount;
         }
     }
